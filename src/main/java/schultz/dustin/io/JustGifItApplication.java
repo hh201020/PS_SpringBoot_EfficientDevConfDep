@@ -10,7 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
 import org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
+import org.springframework.web.filter.HttpPutFormContentFilter;
+import org.springframework.web.filter.RequestContextFilter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -33,6 +37,27 @@ public class JustGifItApplication {
         }
     }
 
+//    @Bean
+//    public FilterRegistrationBean deRegisterHiddenHttpMethodFilter(HiddenHttpMethodFilter filter) {
+//    	FilterRegistrationBean bean = new FilterRegistrationBean(filter);
+//    	bean.setEnabled(false);
+//    	return bean;
+//    }
+//
+    @Bean
+    public FilterRegistrationBean deRegisterHttpPutFormContentFilter(HttpPutFormContentFilter filter) {
+    	FilterRegistrationBean bean = new FilterRegistrationBean(filter);
+    	bean.setEnabled(false);
+    	return bean;
+    }
+
+    @Bean
+    public FilterRegistrationBean deRegisterRequestContextFilter(RequestContextFilter filter) {
+    	FilterRegistrationBean bean = new FilterRegistrationBean(filter);
+    	bean.setEnabled(false);
+    	return bean;
+    }
+    
     @Bean
     public WebMvcConfigurer webMvcConfigurer() {
         return new WebMvcConfigurerAdapter() {
