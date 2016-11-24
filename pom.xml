@@ -92,7 +92,7 @@
                     <workingDirectory>src/main/resources</workingDirectory>
                 </configuration>
                 <executions>
-                    <execution>
+ <!--                   <execution>
                         <id>install node and npm</id>
                         <goals>
                             <goal>install-node-and-npm</goal>
@@ -108,7 +108,7 @@
                             <arguments>install</arguments>
                         </configuration>
                     </execution>
-                    <execution>
+                     <execution>
                         <id>webpack build</id>
                         <goals>
                             <goal>webpack</goal>
@@ -116,7 +116,7 @@
                         <configuration>
                             <arguments>-p</arguments>
                         </configuration>
-                    </execution>
+                    </execution> -->
                 </executions>
             </plugin>
         </plugins>
